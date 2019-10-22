@@ -1,99 +1,134 @@
 import java.awt.*;
 
 public class World {
-    Point a,b,c,smiley;
-
+    Integer ax,ay,bx,by,cx,cy,smileyx,smileyy;
+    Integer size = 4;
     public World(Integer ax,Integer ay,Integer bx,Integer by, Integer cx, Integer cy, Integer sx, Integer sy) {
-        a = new Point(ax, ay);
-        b = new Point(bx, by);
-        c = new Point(cx,cy);
-        smiley = new Point(sx,sy);
+        this.ax = ax;
+        this.ay = ay;
+        this.bx = bx;
+        this.by = by;
+        this.cx = cx;
+        this.cy = cy;
+        this.smileyx = sx;
+        this.smileyy = sy;
     }
 
     public World moveUp()
     {
 
-        if(smiley.x==0)
+        if(smileyx==0)
             return null;
         else
         {
-           World newWorld = new World(a.x,a.y,b.x,b.y,c.x,c.y,smiley.x,smiley.y);
-           if(newWorld.a.x == newWorld.smiley.x-1)
-               swap(newWorld.smiley,newWorld.a);
-           else if(newWorld.b.x == newWorld.smiley.x-1)
-                    swap(newWorld.smiley,newWorld.b);
-                else if(newWorld.c.x == newWorld.smiley.x-1)
-                        newWorld.swap(newWorld.smiley,newWorld.c);
+           World newWorld = new World(ax,ay,bx,by,cx,cy,smileyx,smileyy);
+           if(newWorld.ax == newWorld.smileyx-1)
+               swap(newWorld.smileyx,newWorld.smileyy,newWorld.ax,newWorld.ay);
+           else if(newWorld.bx == newWorld.smileyx-1)
+               swap(newWorld.smileyx,newWorld.smileyy,newWorld.bx,newWorld.by);
+                else if(newWorld.cx == newWorld.smileyx-1)
+               swap(newWorld.smileyx,newWorld.smileyy,newWorld.cx,newWorld.cy);
                      else
-                         newWorld.smiley.x -=1;
+                         newWorld.smileyx -=1;
            return newWorld;
         }
     }
     public World moveDown()
     {
 
-        if(smiley.x==3)
+        if(smileyx==size-1)
             return null;
         else
         {
-            World newWorld = new World(a.x,a.y,b.x,b.y,c.x,c.y,smiley.x,smiley.y);
-            if(newWorld.a.x == newWorld.smiley.x+1)
-                swap(newWorld.smiley,newWorld.a);
-            else if(newWorld.b.x == newWorld.smiley.x+1)
-                swap(newWorld.smiley,newWorld.b);
-            else if(newWorld.c.x == newWorld.smiley.x+1)
-                newWorld.swap(newWorld.smiley,newWorld.c);
+            World newWorld = new World(ax,ay,bx,by,cx,cy,smileyx,smileyy);
+            if(newWorld.ax == newWorld.smileyx+1)
+                swap(newWorld.smileyx,newWorld.smileyy,newWorld.ax,newWorld.ay);
+            else if(newWorld.bx == newWorld.smileyx+1)
+                swap(newWorld.smileyx,newWorld.smileyy,newWorld.bx,newWorld.by);
+            else if(newWorld.cx == newWorld.smileyx+1)
+                swap(newWorld.smileyx,newWorld.smileyy,newWorld.cx,newWorld.cy);
             else
-                newWorld.smiley.x +=1;
+                newWorld.smileyx +=1;
             return newWorld;
         }
     }
     public World moveRight()
     {
 
-        if(smiley.y == 3)
+        if(smileyy == size -1)
             return null;
         else
         {
-            World newWorld = new World(a.x,a.y,b.x,b.y,c.x,c.y,smiley.x,smiley.y);
-            if(newWorld.a.y == newWorld.smiley.y+1)
-                swap(newWorld.smiley,newWorld.a);
-            else if(newWorld.b.y == newWorld.smiley.y+1)
-                swap(newWorld.smiley,newWorld.b);
-            else if(newWorld.c.y == newWorld.smiley.y+1)
-                newWorld.swap(newWorld.smiley,newWorld.c);
+            World newWorld = new World(ax,ay,bx,by,cx,cy,smileyx,smileyy);
+            if(newWorld.ay == newWorld.smileyy+1)
+                swap(newWorld.smileyx,newWorld.smileyy,newWorld.ax,newWorld.ay);
+            else if(newWorld.by == newWorld.smileyy+1)
+                swap(newWorld.smileyx,newWorld.smileyy,newWorld.bx,newWorld.by);
+            else if(newWorld.cy == newWorld.smileyy+1)
+                swap(newWorld.smileyx,newWorld.smileyy,newWorld.cx,newWorld.cy);
             else
-                newWorld.smiley.y +=1;
+                newWorld.smileyy +=1;
             return newWorld;
         }
     }
     public World moveLeft()
     {
 
-        if(smiley.y==0)
+        if(smileyy==0)
             return null;
         else
         {
-            World newWorld = new World(a.x,a.y,b.x,b.y,c.x,c.y,smiley.x,smiley.y);
-            if(newWorld.a.y == newWorld.smiley.y-1)
-                swap(newWorld.smiley,newWorld.a);
-            else if(newWorld.b.y == newWorld.smiley.y-1)
-                swap(newWorld.smiley,newWorld.b);
-            else if(newWorld.c.y == newWorld.smiley.y-1)
-                newWorld.swap(newWorld.smiley,newWorld.c);
+            World newWorld = new World(ax,ay,bx,by,cx,cy,smileyx,smileyy);
+            if(newWorld.ay == newWorld.smileyy-1)
+                swap(newWorld.smileyx,newWorld.smileyy,newWorld.ax,newWorld.ay);
+            else if(newWorld.by == newWorld.smileyy-1)
+                swap(newWorld.smileyx,newWorld.smileyy,newWorld.bx,newWorld.by);
+            else if(newWorld.cy == newWorld.smileyy-1)
+                swap(newWorld.smileyx,newWorld.smileyy,newWorld.cx,newWorld.cy);
             else
-                newWorld.smiley.y -=1;
+                newWorld.smileyy -=1;
             return newWorld;
         }
     }
 
-    public void swap(Point x , Point y)
+    public void swap(Integer xx, Integer xy, Integer yx, Integer yy)
     {
-        Integer auxx = x.x, auxy=x.y;
-        x.x = y.x;
-        x.y = y.y;
-        y.x = auxx;
-        y.y = auxy;
+        Integer auxx = xx, auxy=xy;
+        xx = yx;
+        xy = yy;
+        yx = auxx;
+        yy = auxy;
     }
+    public void printWorld()
+    {
+        System.out.println("--------------------------------");
+        for (int i = 0;i < 4 ; i++)
+        {
+            for (int j = 0; j < 4; j++)
+                if(this.ax == i && this.ay == j)
+                    System.out.print("-A-");
+                else
+                if(this.bx == i && this.by == j)
+                    System.out.print("-B-");
+                else
+                if(this.cx == i && this.cy == j)
+                    System.out.print("-C-");
+                else
+                if(this.smileyx == i && this.smileyy == j)
+                    System.out.print("-:)-");
+                else
+                    System.out.print("-0-");
+            System.out.println();
 
+        }
+        System.out.println("--------------------------------");
+
+    }
+    public Boolean checkGoal(World goal)
+    {
+        if(ax == goal.ax && ay == goal.ay && bx == goal.bx && by == goal.by && cx == goal.cx && cy == goal.cy)
+            return true;
+        else
+            return false;
+    }
 }

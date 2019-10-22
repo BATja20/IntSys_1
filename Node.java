@@ -14,9 +14,10 @@ public class Node {
         children = new ArrayList<>();
     }
 
-    public void addChild(World child)
+    public World addChild(World child)
     {
         children.add(child);
+        return child;
     }
 
 }
