@@ -22,12 +22,21 @@ public class World {
         else
         {
            World newWorld = new World(ax,ay,bx,by,cx,cy,smileyx,smileyy);
-           if(newWorld.ax == newWorld.smileyx-1)
-               swap(newWorld.smileyx,newWorld.smileyy,newWorld.ax,newWorld.ay);
-           else if(newWorld.bx == newWorld.smileyx-1)
-               swap(newWorld.smileyx,newWorld.smileyy,newWorld.bx,newWorld.by);
-                else if(newWorld.cx == newWorld.smileyx-1)
-               swap(newWorld.smileyx,newWorld.smileyy,newWorld.cx,newWorld.cy);
+           if(newWorld.ax == newWorld.smileyx-1 && newWorld.ay == newWorld.smileyy)
+           {
+               newWorld.ax = smileyx;
+               newWorld.smileyx-=1;
+           }
+           else if(newWorld.bx == newWorld.smileyx-1 && newWorld.by == newWorld.smileyy)
+               {
+                   newWorld.bx = smileyx;
+                   newWorld.smileyx-=1;
+               }
+                else if(newWorld.cx == newWorld.smileyx-1 && newWorld.cy == newWorld.smileyy)
+                   {
+                       newWorld.cx = smileyx;
+                       newWorld.smileyx-=1;
+                   }
                      else
                          newWorld.smileyx -=1;
            return newWorld;
@@ -41,12 +50,21 @@ public class World {
         else
         {
             World newWorld = new World(ax,ay,bx,by,cx,cy,smileyx,smileyy);
-            if(newWorld.ax == newWorld.smileyx+1)
-                swap(newWorld.smileyx,newWorld.smileyy,newWorld.ax,newWorld.ay);
-            else if(newWorld.bx == newWorld.smileyx+1)
-                swap(newWorld.smileyx,newWorld.smileyy,newWorld.bx,newWorld.by);
-            else if(newWorld.cx == newWorld.smileyx+1)
-                swap(newWorld.smileyx,newWorld.smileyy,newWorld.cx,newWorld.cy);
+            if(newWorld.ax == newWorld.smileyx+1 && newWorld.ay == newWorld.smileyy)
+            {
+                newWorld.ax = smileyx;
+                newWorld.smileyx+=1;
+            }
+            else if(newWorld.bx == newWorld.smileyx+1 && newWorld.by == newWorld.smileyy)
+            {
+                newWorld.bx = smileyx;
+                newWorld.smileyx+=1;
+            }
+            else if(newWorld.cx == newWorld.smileyx+1 && newWorld.cy == newWorld.smileyy)
+            {
+                newWorld.cx = smileyx;
+                newWorld.smileyx+=1;
+            }
             else
                 newWorld.smileyx +=1;
             return newWorld;
@@ -60,12 +78,21 @@ public class World {
         else
         {
             World newWorld = new World(ax,ay,bx,by,cx,cy,smileyx,smileyy);
-            if(newWorld.ay == newWorld.smileyy+1)
-                swap(newWorld.smileyx,newWorld.smileyy,newWorld.ax,newWorld.ay);
-            else if(newWorld.by == newWorld.smileyy+1)
-                swap(newWorld.smileyx,newWorld.smileyy,newWorld.bx,newWorld.by);
-            else if(newWorld.cy == newWorld.smileyy+1)
-                swap(newWorld.smileyx,newWorld.smileyy,newWorld.cx,newWorld.cy);
+            if(newWorld.ay == newWorld.smileyy+1 && newWorld.ax == newWorld.smileyx)
+            {
+                newWorld.ay = smileyy;
+                newWorld.smileyy+=1;
+            }
+            else if(newWorld.by == newWorld.smileyy+1 && newWorld.bx == newWorld.smileyx)
+            {
+                newWorld.by = smileyy;
+                newWorld.smileyy+=1;
+            }
+            else if(newWorld.cy == newWorld.smileyy+1 && newWorld.cx == newWorld.smileyx)
+            {
+                newWorld.cy = smileyy;
+                newWorld.smileyy+=1;
+            }
             else
                 newWorld.smileyy +=1;
             return newWorld;
@@ -79,26 +106,35 @@ public class World {
         else
         {
             World newWorld = new World(ax,ay,bx,by,cx,cy,smileyx,smileyy);
-            if(newWorld.ay == newWorld.smileyy-1)
-                swap(newWorld.smileyx,newWorld.smileyy,newWorld.ax,newWorld.ay);
-            else if(newWorld.by == newWorld.smileyy-1)
-                swap(newWorld.smileyx,newWorld.smileyy,newWorld.bx,newWorld.by);
-            else if(newWorld.cy == newWorld.smileyy-1)
-                swap(newWorld.smileyx,newWorld.smileyy,newWorld.cx,newWorld.cy);
+            if(newWorld.ay == newWorld.smileyy-1 && newWorld.ax == newWorld.smileyx)
+            {
+                newWorld.ay = smileyy;
+                newWorld.smileyy-=1;
+            }
+            else if(newWorld.by == newWorld.smileyy-1 && newWorld.bx == newWorld.smileyx)
+            {
+                newWorld.by = smileyy;
+                newWorld.smileyy-=1;
+            }
+            else if(newWorld.cy == newWorld.smileyy-1 && newWorld.cx == newWorld.smileyx)
+            {
+                newWorld.cy = smileyy;
+                newWorld.smileyy-=1;
+            }
             else
                 newWorld.smileyy -=1;
             return newWorld;
         }
     }
-
+/*
     public void swap(Integer xx, Integer xy, Integer yx, Integer yy)
     {
         Integer auxx = xx, auxy=xy;
-        xx = yx;
-        xy = yy;
-        yx = auxx;
-        yy = auxy;
-    }
+        xx = new Integer(yx);
+        xy = new Integer(yy);
+        yx = new Integer(auxx);
+        yy = new Integer(auxy);
+    }*/
     public void printWorld()
     {
         System.out.println("--------------------------------");

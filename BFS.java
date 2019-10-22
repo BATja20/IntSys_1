@@ -20,36 +20,39 @@ public class BFS {
             Node currentNode = fringe.remove();
             System.out.println("Now checking level : " + currentNode.level);
             System.out.println("Now checking node : " +nodes++);
-            currentNode.world.printWorld();
+            //if(nodes<10)
+                //currentNode.world.printWorld();
+            //if(nodes==10)
+               // break;
             if(currentNode.world.checkGoal(goalState))
             {
                 goalNode = currentNode;
                 break;
             }
-            World child;
-            if (( child = currentNode.world.moveLeft())== null)
+            //World child;
+            if (currentNode.world.moveLeft()== null)
                 System.out.println("cannot move Left");
             else
             {
-                fringe.add(new Node(currentNode.addChild(child),currentNode.world,currentNode.level+1));
+                fringe.add(new Node(currentNode.world.moveLeft(),currentNode.world,currentNode.level+1));
             }
-            if (( child = currentNode.world.moveUp())== null)
+            if (currentNode.world.moveUp()== null)
                 System.out.println("cannot move Up");
             else
             {
-                fringe.add(new Node(currentNode.addChild(child),currentNode.world,currentNode.level+1));
+                fringe.add(new Node(currentNode.world.moveUp(),currentNode.world,currentNode.level+1));
             }
-            if (( child = currentNode.world.moveRight())== null)
+            if ( currentNode.world.moveRight()== null)
                 System.out.println("cannot move Right");
             else
             {
-                fringe.add(new Node(currentNode.addChild(child),currentNode.world,currentNode.level+1));
+                fringe.add(new Node(currentNode.world.moveRight(),currentNode.world,currentNode.level+1));
             }
-            if (( child = currentNode.world.moveDown())== null)
+            if (currentNode.world.moveDown()== null)
                 System.out.println("cannot move Down");
             else
             {
-                fringe.add(new Node(currentNode.addChild(child),currentNode.world,currentNode.level+1));
+                fringe.add(new Node(currentNode.world.moveDown(),currentNode.world,currentNode.level+1));
             }
         }
         System.out.println("This");
@@ -57,16 +60,18 @@ public class BFS {
     public static void main(String arg[])
     {
         BFS bfs = new BFS();
-        //bfs.bfs();
+        bfs.bfs();
+        /*
         Node currentNode = bfs.fringe.remove();
         World child;
-        if (( child = currentNode.world.moveLeft())== null)
+        if (( child = currentNode.world.moveUp())== null)
             System.out.println("cannot move Left");
         else
         {
             child.printWorld();
-            bfs.fringe.add(new Node(currentNode.addChild(child),currentNode.world,currentNode.level+1));
+            bfs.fringe.add(new Node(child,currentNode.world,currentNode.level+1));
         }
+        */
     }
 
 }
