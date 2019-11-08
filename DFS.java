@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -16,43 +17,53 @@ public class DFS {
             Node currentNode = fringe.pop();
             System.out.println("Now checking level : " + currentNode.level);
             System.out.println("Now checking node : " + nodes++);
-            //currentNode.world.printWorld();
+            currentNode.world.printWorld();
             if(currentNode.world.checkGoal(goalState))
             {
                 goalNode = currentNode;
                 break;
             }
             Random r = new Random();
-            boolean added = false;
-            while (!added)
-                switch (r.nextInt(3))
+            Integer i;
+            HashMap<Integer,Boolean> map = new HashMap<>();
+            map.put(0,false);
+            map.put(1,false);
+            map.put(2,false);
+            map.put(3,false);
+            while(map.values().contains(false))
+                switch (i = r.nextInt(4))
                 {
+
                     case 0:
-                        if(currentNode.world.moveLeft()!=null)
-                        {
-                            fringe.push(new Node(currentNode.world.moveLeft(),currentNode.world,currentNode.level+1));
-                            added =true;
+                        //if (currentNode.world.moveLeft() != null && currentNode.world.moveLeft().isDifferent(currentNode.parent )&& !map.get(i)) {
+                        if (currentNode.world.moveLeft() != null && !map.get(i)){
+                            System.out.println(i);
+                            fringe.push(new Node(currentNode.world.moveLeft(), currentNode.world, currentNode.level + 1));
                         }
+                        map.replace(i,true);
                         break;
                     case 1:
-                        if(currentNode.world.moveRight()!=null)
-                        {
-                            fringe.push(new Node(currentNode.world.moveRight(),currentNode.world,currentNode.level+1));
-                            added =true;
+                        if (currentNode.world.moveRight() != null && currentNode.world.moveRight().isDifferent(currentNode.parent)&& !map.get(i)) {
+                            System.out.println(i);
+                            fringe.push(new Node(currentNode.world.moveRight(), currentNode.world, currentNode.level + 1));
                         }
+                        map.replace(i,true);
                         break;
                     case 2:
-                        if(currentNode.world.moveDown()!=null)
-                        {
-                            fringe.push(new Node(currentNode.world.moveDown(),currentNode.world,currentNode.level+1));
-                            added =true;
+                        if (currentNode.world.moveDown() != null && currentNode.world.moveDown().isDifferent(currentNode.parent)) {
+                            System.out.println(i);
+                            fringe.push(new Node(currentNode.world.moveDown(), currentNode.world, currentNode.level + 1));
                         }
+                        map.replace(i,true);
+                        break;
                     case 3:
-                        if(currentNode.world.moveUp()!=null)
-                        {
-                            fringe.push(new Node(currentNode.world.moveUp(),currentNode.world,currentNode.level+1));
-                            added =true;
+                        if (currentNode.world.moveUp() != null && currentNode.world.moveUp().isDifferent(currentNode.parent)) {
+                            System.out.println(i);
+                            fringe.push(new Node(currentNode.world.moveUp(), currentNode.world, currentNode.level + 1));
                         }
+                        map.replace(i,true);
+                        break;
+
                 }
         }
 

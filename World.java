@@ -167,4 +167,15 @@ public class World {
         else
             return false;
     }
+
+    public Boolean isDifferent(World world)
+    {
+        if(world==null)
+            return true;
+        if(ax == world.ax && ay == world.ay && bx == world.bx && by == world.by && cx == world.cx && cy == world.cy && smileyx == world.smileyx && smileyy == world.smileyy)
+            return false;
+        else
+            return true;
+    }
+
 }
