@@ -43,21 +43,24 @@ public class DFS {
                         map.replace(i,true);
                         break;
                     case 1:
-                        if (currentNode.world.moveRight() != null && currentNode.world.moveRight().isDifferent(currentNode.parent)&& !map.get(i)) {
+                        //if (currentNode.world.moveRight() != null && currentNode.world.moveRight().isDifferent(currentNode.parent)&& !map.get(i)) {
+                        if (currentNode.world.moveRight() != null && !map.get(i)){
                             System.out.println(i);
                             fringe.push(new Node(currentNode.world.moveRight(), currentNode.world, currentNode.level + 1));
                         }
                         map.replace(i,true);
                         break;
                     case 2:
-                        if (currentNode.world.moveDown() != null && currentNode.world.moveDown().isDifferent(currentNode.parent)) {
+                        //if (currentNode.world.moveDown() != null && currentNode.world.moveDown().isDifferent(currentNode.parent)) {
+                        if (currentNode.world.moveDown() != null && !map.get(i)){
                             System.out.println(i);
                             fringe.push(new Node(currentNode.world.moveDown(), currentNode.world, currentNode.level + 1));
                         }
                         map.replace(i,true);
                         break;
                     case 3:
-                        if (currentNode.world.moveUp() != null && currentNode.world.moveUp().isDifferent(currentNode.parent)) {
+                        //if (currentNode.world.moveUp() != null && currentNode.world.moveUp().isDifferent(currentNode.parent)) {
+                        if (currentNode.world.moveUp() != null && !map.get(i)){
                             System.out.println(i);
                             fringe.push(new Node(currentNode.world.moveUp(), currentNode.world, currentNode.level + 1));
                         }
